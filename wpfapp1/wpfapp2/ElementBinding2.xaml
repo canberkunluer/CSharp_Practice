@@ -1,0 +1,29 @@
+﻿<Window x:Class="wpfapp2.ElementBinding2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfapp2"
+        mc:Ignorable="d"
+        Title="ElementBinding2" Height="450" Width="800">
+    <Grid>
+        <TextBlock Margin="12,300,10,0" Height="53" Name="txt"
+                   VerticalAlignment="Top" 
+                   Text="{Binding ElementName=lst,Path=SelectedItem.Content}"></TextBlock>
+
+        <ListBox Name="lst" Margin="12,52,12,110" Height="30">
+            <ListBoxItem Content="C:"/>
+            <ListBoxItem Content="a:"/>
+            <ListBoxItem Content="b:"/>
+            <ListBoxItem Content="D:"/>
+            <ListBoxItem Content="E:"/>
+        </ListBox>
+        <!--<ComboBox Name="lst" Margin="12,52,12,110" Height="30">
+            <ComboBoxItem Content="C:"/>
+            <ComboBoxItem Content="a:"/>
+            <ComboBoxItem Content="b:"/>
+            <ComboBoxItem Content="D:"/>
+            <ComboBoxItem Content="E:"/>
+        </ComboBox>-->
+    </Grid>
+</Window>

@@ -1,0 +1,77 @@
+﻿<Window x:Class="wpfapp2.ElementBinding3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfapp2"
+        mc:Ignorable="d"
+        Title="ElementBinding3" Height="450" Width="800">
+    <Grid>
+
+        <Slider Name="slider1" Margin="10,10,10,273"
+                Minimum="1" Maximum="100" 
+                TickFrequency="1" TickPlacement="TopLeft">
+        </Slider>
+        <TextBlock Text="Canberk Ünlüer" Name="txt2" FontSize="{Binding ElementName=slider1,Path=Value}" RenderTransformOrigin="0.5,0.5" Margin="6,276,274,12"
+                   >
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.243"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform></TextBlock>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Width="143" >
+            <CheckBox Name="chc" Content="Sözleşmeyi Okudum!"></CheckBox>
+            <Button Name="btn" Content="Kayıt ol" 
+                    IsEnabled="{Binding ElementName=chc,Path=IsChecked}">
+            </Button>
+            <Button x:Name="btn1" Content="Üstüne Gel" Width="{Binding ElementName=slider1,Path=Value}"  
+                    RenderTransformOrigin="1.35,-1.184"/>
+            <Popup Margin="0,10,0,13" x:Name="Popup1" HorizontalAlignment="Left"   
+        		VerticalAlignment="Top" Width="150" Height="50" PlacementTarget="{Binding ElementName=btn1}" AllowsTransparency="True"
+        		PopupAnimation="Slide" IsOpen="{Binding IsMouseOver, ElementName=btn1, Mode=OneWay}" >
+                <TextBlock x:Name="txt1" Background="Azure" Text="Canberk Ünlüer"/>
+
+            </Popup>
+
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Width="279" Margin="0,35,0,0">
+            <Label>İl</Label>
+            <ComboBox x:Name="lst" Height="30" Width="245" Margin="10">
+                <ComboBoxItem Content="Ankara"/>
+                <ComboBoxItem Content="İstanbul"/>
+                <ComboBoxItem Content="izmir:"/>
+                <ComboBoxItem Content="Çanakkale"/>
+                <ComboBoxItem Content="Bursa"/>
+            </ComboBox>
+            <Label>Okul</Label>
+            <ComboBox x:Name="lst1" Height="30" Width="247" Margin="10">
+                <ComboBoxItem Content="İlkokul"/>
+                <ComboBoxItem Content="Lise"/>
+                <ComboBoxItem Content="Üniversite"/>
+
+            </ComboBox>
+            
+            <StackPanel >
+                <TextBlock Height="53" x:Name="txt3"
+                   Text="{Binding SelectedItem.Content, ElementName=lst}" RenderTransformOrigin="0.5,0.5" Width="279">
+
+                </TextBlock>
+                <TextBlock HorizontalAlignment="left" Height="53" x:Name="txt4"
+                   Text="{Binding SelectedItem.Content, ElementName=lst1}" Width="126"/>
+            </StackPanel>
+            
+           
+        </StackPanel>
+
+
+
+
+
+
+
+    </Grid>
+</Window>
